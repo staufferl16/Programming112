@@ -2,7 +2,7 @@
 File: node.py
 Author: Ken Lambert
 Editor: Leigh Stauffer
-Project 8
+Project 9
 """
 
 class Node(object):
@@ -11,11 +11,3 @@ class Node(object):
     def __init__(self, data, next = None):
         self.data = data
         self.next = next
-
-class TwoWayNode(Node):
-    """Represents a doubly linked node."""
-
-    def __init__(self, data = None, previous = None, next = None):
-        Node.__init__(self, data, next)
-        self.previous = previous
-    

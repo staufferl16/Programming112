@@ -2,7 +2,7 @@
 File: linkedqueue.py
 Author: Ken Lambert
 Editor: Leigh Stauffer
-Project 7
+Project 9
 """
 
 from node import Node
