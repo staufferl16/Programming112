@@ -1,6 +1,7 @@
 """
+Name: Leigh Stauffer
 File: abstractstack.py
-Author: Leigh Stauffer
+Author: Ken Lambert
 Project 6
 """
 

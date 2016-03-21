@@ -1,19 +1,14 @@
 """
 Name: Leigh Stauffer
-Project 6
 File: node.py
-
-One-way nodes for linked structures.
-
-To instantiate, use
-
-<variable> = Node(<dataum>, <optional next node>)
-
-The next node is None by default.
+Project 6
+Author: Ken Lambert
 """
 
 class Node(object):
+    """Nodes for singly linked structures."""
 
-   def __init__(self, data, next = None):
-       self.data = data
-       self.next = next
+    def __init__(self, data, next = None):
+        """Instantiates a Node with default next of None"""
+        self.data = data
+        self.next = next
