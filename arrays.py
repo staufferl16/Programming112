@@ -1,7 +1,7 @@
 """
-Editor: Leigh Stauffer
 File: array.py
-Project 8
+Editor: Leigh Stauffer
+Project 11
 
 An Array is a restricted list whose clients can use
 only [], len, iter, and str.

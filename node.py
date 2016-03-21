@@ -1,13 +1,19 @@
 """
 File: node.py
-Author: Ken Lambert
 Editor: Leigh Stauffer
-Project 9
+Project 11
+
+One-way nodes for linked structures.
+
+To instantiate, use
+
+<variable> = Node(<dataum>, <optional next node>)
+
+The next node is None by default.
 """
 
 class Node(object):
-    """Represents a singly linked node."""
 
-    def __init__(self, data, next = None):
-        self.data = data
-        self.next = next
+   def __init__(self, data, next = None):
+       self.data = data
+       self.next = next
