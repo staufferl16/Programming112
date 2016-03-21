@@ -1,7 +1,7 @@
 """
 File: abstractcollection.py
 Author: Leigh Stauffer
-Project 6
+Project 7
 """
 
 class AbstractCollection(object):

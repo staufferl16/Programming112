@@ -1,8 +1,8 @@
 """
-Name: Leigh Stauffer
 File: node.py
-Project 6
 Author: Ken Lambert
+Editor: Leigh Stauffer
+Project 7
 """
 
 class Node(object):
