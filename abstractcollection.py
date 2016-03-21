@@ -1,7 +1,8 @@
 """
 File: abstractcollection.py
-Author: Leigh Stauffer
-Project 7
+Author: Ken Lambert
+Editor: Leigh Stauffer
+Project 8
 """
 
 class AbstractCollection(object):
@@ -17,20 +18,21 @@ class AbstractCollection(object):
                 self.add(item)
 
     # Accessor methods
-    def __len__(self):
-        """-> The number of items in self."""
-        return self._size
-
     def isEmpty(self):
+        """Returns True if len(self) == 0, or False otherwise."""
         return len(self) == 0
+    
+    def __len__(self):
+        """Returns the number of items in self."""
+        return self._size
 
     def __str__(self):
         """Returns the string representation of self."""
         return "[" + ", ".join(map(str, self)) + "]"
 
     def __add__(self, other):
-        """Returns a new collection consisting of the
-        items in self and other."""
+        """Returns a new collection containing the contents
+        of self and other."""
         result = type(self)(self)
         for item in other:
             result.add(item)
@@ -48,3 +50,11 @@ class AbstractCollection(object):
             if item != next(otherIter):
                 return False
         return True
+
+    def count(self, item):
+        """Returns the number of instance of item in self."""
+        counter = 0
+        for nextItem in self:
+            if item == nextItem: counter += 1
+        return counter
+

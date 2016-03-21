@@ -2,13 +2,20 @@
 File: node.py
 Author: Ken Lambert
 Editor: Leigh Stauffer
-Project 7
+Project 8
 """
 
 class Node(object):
-    """Nodes for singly linked structures."""
+    """Represents a singly linked node."""
 
     def __init__(self, data, next = None):
-        """Instantiates a Node with default next of None"""
         self.data = data
         self.next = next
+
+class TwoWayNode(Node):
+    """Represents a doubly linked node."""
+
+    def __init__(self, data = None, previous = None, next = None):
+        Node.__init__(self, data, next)
+        self.previous = previous
+    
