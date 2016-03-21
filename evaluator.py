@@ -1,7 +1,7 @@
 """
 Author: Leigh Stauffer
 File: evaluator.py
-Project 6
+Project 10
 """
 
 from tokens import Token

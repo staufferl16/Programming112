@@ -1,88 +1,87 @@
 """
-Name: Leigh Stauffer
-Project 6
 File: scanner.py
+Editor: Leigh Stauffer
+Project 10
 A scanner for processing languages.
+Modified version of scanner used in Chapter 13.
+Includes methods get and stringUpToCurrentToken.
+get returns Token.EOE when the string has been scanned.
+No precondition on next.
 """
 
 from tokens import Token
 
 class Scanner(object):
-    """A scanner for simple languages."""
 
     EOE = ';'        # end-of-expression
     TAB = '\t'       # tab
 
     def __init__(self, sourceStr):
-        self._sourceStr = sourceStr
-        self._getFirstToken()
+        self.sourceStr = sourceStr
+        self.getFirstToken()
 
-    def hasNextToken(self):
-        """Returns True if there is a next token,
-        or False otherwise."""
-        return self._currentToken != None
+    def hasNext(self):
+        return self.currentToken != Token.EOE
 
-    def nextToken(self):
-        """Returns the next token.
-        Precondition: hashNext returns True.
-        Raises: Exception if hasNext returns False."""
-        if not self.hasNextToken():
-            raise Exception("There are no more tokens")            
-        temp = self._currentToken
-        self._getNextToken()
+    def get(self):
+        return self.currentToken
+
+    def next(self):
+        temp = self.currentToken
+        self.getNextToken()
         return temp
 
-    def __iter__(self):
-        """Returns an iterator on self."""
-        while self.hasNextToken():
-            yield self.nextToken()
+    def stringUpToCurrentToken(self):
+        return self.sourceStr[0:self.index + 1]
 
-    def _getFirstToken(self):
-        self._index = 0
-        self._currentChar = self._sourceStr[0]
-        self._getNextToken()
+    def getFirstToken(self):
+        self.index = 0
+        self.currentChar = self.sourceStr[0]
+        self.getNextToken()
     
-    def _getNextToken(self):
-        self._skipWhiteSpace()
-        if self._currentChar.isdigit():
-            self._currentToken = Token(self._getInteger())
-        elif self._currentChar == Scanner.EOE:
-            self._currentToken = None
+    def getNextToken(self):
+        self.skipWhiteSpace()
+        if self.currentChar.isdigit():
+            self.currentToken = Token(self.getInteger())
+        elif self.currentChar == Scanner.EOE:
+            self.currentToken = Token(';')
         else:
-            self._currentToken = Token(self._currentChar)
-            self._nextChar()
+            self.currentToken = Token(self.currentChar)
+            self.nextChar()
     
-    def _nextChar(self):
-        if self._index >= len(self._sourceStr) - 1:
-            self._currentChar = Scanner.EOE
+    def nextChar(self):
+        if self.index >= len(self.sourceStr) - 1:
+            self.currentChar = Scanner.EOE
         else:
-            self._index += 1
-            self._currentChar = self._sourceStr[self._index]
+            self.index += 1
+            self.currentChar = self.sourceStr[self.index]
     
-    def _skipWhiteSpace(self):
-        while self._currentChar in (' ', Scanner.TAB):
-            self._nextChar()
+    def skipWhiteSpace(self):
+        while self.currentChar in (' ', Scanner.TAB):
+            self.nextChar()
     
-    def _getInteger(self):
+    def getInteger(self):
         num = 0
         while True:
-            num = num * 10 + int(self._currentChar)
-            self._nextChar()
-            if not self._currentChar.isdigit():
+            num = num * 10 + int(self.currentChar)
+            self.nextChar()
+            if not self.currentChar.isdigit():
                 break
         return num
 
 
-def test():
+def main():
     """A simple tester program."""
     while True:
         sourceStr = input("Enter an expression: ")
         if sourceStr == "": break
-        print("Token strings:")
         scanner = Scanner(sourceStr)
-        for token in scanner:
+        token = scanner.get()
+        while token.getType() != Token.EOE:
             print(token)
+            scanner.next()
+            token = scanner.get()
 
 if __name__ == '__main__': 
-    test()
+    main()
 
