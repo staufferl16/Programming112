@@ -1,6 +1,6 @@
 """
-Name: Leigh Stauffer
-Project 6
+Editor: Leigh Stauffer
+Project 12
 File: grid.py
 """
 
@@ -35,26 +35,9 @@ class Grid(object):
             result += "\n"
         return result
 
-    def __iter__(self):
-        """Yields the grid's items in row major order."""
-        row = 0
-        while row < self.getHeight():
-            column = 0
-            while column < self.getWidth():
-                yield self[row][column]
-                column += 1
-            row += 1
-
-def main(rows = 10, columns = 10, fillValue = 1):
-    g = Grid(rows, columns, fillValue)
-    print("The grid:\n", g)
-    for row in range(g.getHeight()):
-        for column in range(g.getWidth()):
-            g[row][column] = (row, column)
-    print("The grid positions:\n", g)
-    print("The items in row major order:")
-    for item in g:
-        print(item)
+def main():
+    g = Grid(10, 10, 1)
+    print(g)
 
 if __name__ == "__main__": main()
     

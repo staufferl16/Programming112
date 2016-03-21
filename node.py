@@ -1,7 +1,7 @@
 """
 File: node.py
 Editor: Leigh Stauffer
-Project 11
+Project 12
 
 One-way nodes for linked structures.
 
